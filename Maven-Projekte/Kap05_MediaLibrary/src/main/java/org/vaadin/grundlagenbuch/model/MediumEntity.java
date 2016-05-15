@@ -11,71 +11,71 @@ import java.time.LocalDate;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class MediumEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
-    @NotBlank
-    private String title;
+  @NotBlank
+  private String title;
 
-    private BigDecimal price;
+  private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
-    private Genre genre;
+  @ManyToOne(fetch = FetchType.EAGER, optional = true)
+  private Genre genre;
 
-    private LocalDate dateOfPurchase;
+  private LocalDate dateOfPurchase;
 
-    protected MediumEntity() {
-    }
+  protected MediumEntity() {
+  }
 
-    public MediumEntity(String title) {
-        this.title = title;
-    }
+  public MediumEntity(String title) {
+    this.title = title;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+  public BigDecimal getPrice() {
+    return price;
+  }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
 
-    public Genre getGenre() {
-        return genre;
-    }
+  public Genre getGenre() {
+    return genre;
+  }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
+  public void setGenre(Genre genre) {
+    this.genre = genre;
+  }
 
-    public LocalDate getDateOfPurchase() {
-        return dateOfPurchase;
-    }
+  public LocalDate getDateOfPurchase() {
+    return dateOfPurchase;
+  }
 
-    public void setDateOfPurchase(LocalDate dateOfPurchase) {
-        this.dateOfPurchase = dateOfPurchase;
-    }
+  public void setDateOfPurchase(LocalDate dateOfPurchase) {
+    this.dateOfPurchase = dateOfPurchase;
+  }
 
-    @Override
-    public String toString() {
-        return "MediumEntity{" +
-            "id=" + id +
-            ", title='" + title + '\'' +
-            ", price=" + price +
-            ", genre=" + genre +
-            ", dateOfPurchase=" + dateOfPurchase +
-            '}';
-    }
+  @Override
+  public String toString() {
+    return "MediumEntity{" +
+      "id=" + id +
+      ", title='" + title + '\'' +
+      ", price=" + price +
+      ", genre=" + genre +
+      ", dateOfPurchase=" + dateOfPurchase +
+      '}';
+  }
 }

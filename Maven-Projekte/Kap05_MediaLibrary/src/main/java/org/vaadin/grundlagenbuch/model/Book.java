@@ -9,50 +9,50 @@ import javax.persistence.Entity;
 @Document(indexName = "media", type = "book")
 public class Book extends MediumEntity {
 
-	@NotBlank
-	private String author;
+  @NotBlank
+  private String author;
 
-	private String publisher;
+  private String publisher;
 
-	private Boolean read;
+  private Boolean read;
 
-	private Book() {
-	}
+  private Book() {
+  }
 
-	public Book(String title, String author) {
-		super(title);
-		this.author = author;
-	}
+  public Book(String title, String author) {
+    super(title);
+    this.author = author;
+  }
 
-	public String getAuthor() {
-		return author;
-	}
+  public String getAuthor() {
+    return author;
+  }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+  public void setAuthor(String author) {
+    this.author = author;
+  }
 
-	public String getPublisher() {
-		return publisher;
-	}
+  public String getPublisher() {
+    return publisher;
+  }
 
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
+  public void setPublisher(String publisher) {
+    this.publisher = publisher;
+  }
 
-	public Boolean isRead() {
-		return read;
-	}
+  public Boolean isRead() {
+    return read;
+  }
 
-	public void setRead(Boolean read) {
-		this.read = read;
-	}
+  public void setRead(Boolean read) {
+    this.read = read;
+  }
 
-	@Override
-	public String toString() {
-		return "Book{" +
-				"author='" + author + '\'' +
-				", publisher='" + publisher + '\'' +
-				"} " + super.toString();
-	}
+  @Override
+  public String toString() {
+    return "Book{" +
+      "author='" + author + '\'' +
+      ", publisher='" + publisher + '\'' +
+      "} " + super.toString();
+  }
 }

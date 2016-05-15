@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface GenreRepository extends PagingAndSortingRepository<Genre, Long> {
-    List<Genre> findByMediaType(MediaType mediaType);
+  List<Genre> findByMediaType(MediaType mediaType);
 }

@@ -17,74 +17,72 @@ import org.vaadin.grundlagenbuch.repository.GenreRepository;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MedialibraryApplication.class)
 @WebAppConfiguration
 public class GenreServiceTest {
 
-    @Autowired
-    private GenreService service;
+  @Autowired
+  private GenreService service;
 
-    @Autowired
-    private GenreRepository genreRepository;
+  @Autowired
+  private GenreRepository genreRepository;
 
-    private Genre horrorBooks;
-    private Genre rockMusic;
+  private Genre horrorBooks;
+  private Genre rockMusic;
 
-    @Before
-    public void createGenres() {
-        horrorBooks = new Genre("Horror", MediaType.BOOKS);
-        rockMusic = new Genre("Rock", MediaType.MUSIC);
-    }
+  @Before
+  public void createGenres() {
+    horrorBooks = new Genre("Horror", MediaType.BOOKS);
+    rockMusic = new Genre("Rock", MediaType.MUSIC);
+  }
 
-    @After
-    public void deleteAll() {
-        genreRepository.deleteAll();
-    }
+  @After
+  public void deleteAll() {
+    genreRepository.deleteAll();
+  }
 
-    @Test
-    public void testSave() throws Exception {
-        Genre savedRockMusic = service.save(rockMusic);
+  @Test
+  public void testSave() throws Exception {
+    Genre savedRockMusic = service.save(rockMusic);
 
-        assertThat(savedRockMusic, is(not(nullValue())));
-        Iterable<Genre> all = service.findAll();
-        assertThat(all, IsIterableContainingInAnyOrder.containsInAnyOrder(rockMusic));
-    }
+    assertThat(savedRockMusic, is(not(nullValue())));
+    Iterable<Genre> all = service.findAll();
+    assertThat(all, IsIterableContainingInAnyOrder.containsInAnyOrder(rockMusic));
+  }
 
-    @Test
-    public void testFindAll() throws Exception {
-        saveAllGenres();
+  @Test
+  public void testFindAll() throws Exception {
+    saveAllGenres();
 
-        Iterable<Genre> all = service.findAll();
-        assertThat(all, IsIterableWithSize.iterableWithSize(2));
-        assertThat(all, IsIterableContainingInAnyOrder.containsInAnyOrder(horrorBooks, rockMusic));
-    }
+    Iterable<Genre> all = service.findAll();
+    assertThat(all, IsIterableWithSize.iterableWithSize(2));
+    assertThat(all, IsIterableContainingInAnyOrder.containsInAnyOrder(horrorBooks, rockMusic));
+  }
 
-    @Test
-    public void testFindByMediaType() throws Exception {
-        saveAllGenres();
+  @Test
+  public void testFindByMediaType() throws Exception {
+    saveAllGenres();
 
-        List<Genre> musicGenres = service.findByMediaType(MediaType.MUSIC);
-        List<Genre> bookGenres = service.findByMediaType(MediaType.BOOKS);
-        List<Genre> gameGenres = service.findByMediaType(MediaType.GAMES);
+    List<Genre> musicGenres = service.findByMediaType(MediaType.MUSIC);
+    List<Genre> bookGenres = service.findByMediaType(MediaType.BOOKS);
+    List<Genre> gameGenres = service.findByMediaType(MediaType.GAMES);
 
-        assertThat(musicGenres, IsIterableWithSize.iterableWithSize(1));
-        assertThat(musicGenres, IsIterableContainingInAnyOrder.containsInAnyOrder(rockMusic));
+    assertThat(musicGenres, IsIterableWithSize.iterableWithSize(1));
+    assertThat(musicGenres, IsIterableContainingInAnyOrder.containsInAnyOrder(rockMusic));
 
-        assertThat(bookGenres, IsIterableWithSize.iterableWithSize(1));
-        assertThat(bookGenres, IsIterableContainingInAnyOrder.containsInAnyOrder(horrorBooks));
+    assertThat(bookGenres, IsIterableWithSize.iterableWithSize(1));
+    assertThat(bookGenres, IsIterableContainingInAnyOrder.containsInAnyOrder(horrorBooks));
 
-        assertThat(gameGenres, IsIterableWithSize.iterableWithSize(0));
-    }
+    assertThat(gameGenres, IsIterableWithSize.iterableWithSize(0));
+  }
 
-    private void saveAllGenres() {
-        service.save(rockMusic);
-        service.save(horrorBooks);
-    }
+  private void saveAllGenres() {
+    service.save(rockMusic);
+    service.save(horrorBooks);
+  }
 
 }

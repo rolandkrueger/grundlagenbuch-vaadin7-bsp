@@ -11,22 +11,22 @@ import java.util.List;
 @Service
 public class BookService {
 
-    private BookRepository bookRepository;
-    private BookElasticsearchRepository bookElasticsearchRepository;
+  private BookRepository bookRepository;
+  private BookElasticsearchRepository bookElasticsearchRepository;
 
 
-    @Autowired
-    public BookService(BookRepository bookRepository, BookElasticsearchRepository bookElasticsearchRepository) {
-        this.bookRepository = bookRepository;
-        this.bookElasticsearchRepository = bookElasticsearchRepository;
-    }
+  @Autowired
+  public BookService(BookRepository bookRepository, BookElasticsearchRepository bookElasticsearchRepository) {
+    this.bookRepository = bookRepository;
+    this.bookElasticsearchRepository = bookElasticsearchRepository;
+  }
 
-    public Book save(Book book) {
-        Book savedBook = bookRepository.save(book);
-        return savedBook;
-    }
+  public Book save(Book book) {
+    Book savedBook = bookRepository.save(book);
+    return savedBook;
+  }
 
-    public List<Book> searchBooks(String searchTerm) {
-        return bookElasticsearchRepository.findByTitleOrAuthor(searchTerm, searchTerm);
-    }
+  public List<Book> searchBooks(String searchTerm) {
+    return bookElasticsearchRepository.findByTitleOrAuthor(searchTerm, searchTerm);
+  }
 }
