@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "MEDIA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class MediumEntity {
+public abstract class MediumEntity {
 
     @Id
     @GeneratedValue
