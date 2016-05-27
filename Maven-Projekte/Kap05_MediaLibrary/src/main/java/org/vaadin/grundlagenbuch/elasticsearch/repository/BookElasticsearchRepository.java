@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BookElasticsearchRepository extends ElasticsearchRepository<Book, Long> {
 
-  List<Book> findByTitleOrAuthorOrPublisher(String title, String author, String publisher);
+	List<Book> findByTitleOrAuthorOrPublisher(String title, String author, String publisher);
 }
