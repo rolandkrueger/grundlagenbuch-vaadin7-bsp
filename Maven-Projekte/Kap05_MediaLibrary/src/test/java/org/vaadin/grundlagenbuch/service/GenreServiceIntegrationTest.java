@@ -21,9 +21,8 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = MedialibraryApplication.class)
-@WebAppConfiguration
-public class GenreServiceTest {
+@SpringApplicationConfiguration(MedialibraryApplication.class)
+public class GenreServiceIntegrationTest {
 
   @Autowired
   private GenreService service;
@@ -36,7 +35,7 @@ public class GenreServiceTest {
 
   @Before
   public void createGenres() {
-    horrorBooks = new Genre("Horror", MediaType.BOOKS);
+    horrorBooks = new Genre("Horror", MediaType.BOOK);
     rockMusic = new Genre("Rock", MediaType.MUSIC);
   }
 
@@ -68,8 +67,8 @@ public class GenreServiceTest {
     saveAllGenres();
 
     List<Genre> musicGenres = service.findByMediaType(MediaType.MUSIC);
-    List<Genre> bookGenres = service.findByMediaType(MediaType.BOOKS);
-    List<Genre> gameGenres = service.findByMediaType(MediaType.GAMES);
+    List<Genre> bookGenres = service.findByMediaType(MediaType.BOOK);
+    List<Genre> gameGenres = service.findByMediaType(MediaType.GAME);
 
     assertThat(musicGenres, IsIterableWithSize.iterableWithSize(1));
     assertThat(musicGenres, IsIterableContainingInAnyOrder.containsInAnyOrder(rockMusic));
