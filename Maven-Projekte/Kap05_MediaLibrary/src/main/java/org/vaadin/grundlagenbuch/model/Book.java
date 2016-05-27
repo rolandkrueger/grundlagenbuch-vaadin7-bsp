@@ -19,6 +19,11 @@ public class Book extends MediumEntity {
   private Book() {
   }
 
+  public Book(String title, String author, String publisher) {
+    this(title, author);
+    this.publisher = publisher;
+  }
+
   public Book(String title, String author) {
     super(title);
     this.author = author;
