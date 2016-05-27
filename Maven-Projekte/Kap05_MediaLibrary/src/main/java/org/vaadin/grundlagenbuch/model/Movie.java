@@ -1,8 +1,11 @@
 package org.vaadin.grundlagenbuch.model;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import javax.persistence.Entity;
 
 @Entity
+@Document(indexName = "media", type = "movie")
 public class Movie extends MediumEntity {
 
   private String director;

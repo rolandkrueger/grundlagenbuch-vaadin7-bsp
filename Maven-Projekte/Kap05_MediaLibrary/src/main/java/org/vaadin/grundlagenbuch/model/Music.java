@@ -1,10 +1,12 @@
 package org.vaadin.grundlagenbuch.model;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.Entity;
 
 @Entity
+@Document(indexName = "media", type = "music")
 public class Music extends MediumEntity {
 
   @NotBlank
