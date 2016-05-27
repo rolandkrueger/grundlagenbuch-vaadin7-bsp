@@ -27,6 +27,6 @@ public class GenreService {
   }
 
   public List<Genre> findByMediaType(MediaType mediaType) {
-    return genreRepository.findByMediaType(mediaType);
+    return genreRepository.findByMediaTypeOrderByNameAsc(mediaType);
   }
 }

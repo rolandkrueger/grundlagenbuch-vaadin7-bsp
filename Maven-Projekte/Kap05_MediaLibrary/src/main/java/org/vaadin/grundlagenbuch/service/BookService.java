@@ -12,21 +12,41 @@ import java.util.List;
 public class BookService {
 
   private BookRepository bookRepository;
-  private BookElasticsearchRepository bookElasticsearchRepository;
-
+  private BookElasticsearchRepository bookESRepository;
 
   @Autowired
-  public BookService(BookRepository bookRepository, BookElasticsearchRepository bookElasticsearchRepository) {
+  public BookService(BookRepository bookRepository, BookElasticsearchRepository bookESRepository) {
     this.bookRepository = bookRepository;
-    this.bookElasticsearchRepository = bookElasticsearchRepository;
+    this.bookESRepository = bookESRepository;
   }
 
   public Book save(Book book) {
     Book savedBook = bookRepository.save(book);
+    bookESRepository.save(savedBook);
     return savedBook;
   }
 
+  public Book findById(Long id) {
+    return bookRepository.findOne(id);
+  }
+
+  public void deleteBook(Book book) {
+    bookRepository.delete(book);
+    bookESRepository.delete(book);
+  }
+
+  public Iterable<Book> getAllBooks() {
+    return bookRepository.findAll();
+  }
+
   public List<Book> searchBooks(String searchTerm) {
-    return bookElasticsearchRepository.findByTitleOrAuthor(searchTerm, searchTerm);
+    return bookESRepository.findByTitleOrAuthorOrPublisher(searchTerm,
+      searchTerm,
+      searchTerm);
+  }
+
+  public void deleteAllBooks() {
+    bookRepository.deleteAllInBatch();
+    bookESRepository.deleteAll();
   }
 }
