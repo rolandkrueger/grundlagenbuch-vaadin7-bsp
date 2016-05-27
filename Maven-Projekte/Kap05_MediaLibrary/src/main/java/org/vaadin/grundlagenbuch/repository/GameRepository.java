@@ -1,9 +1,7 @@
 package org.vaadin.grundlagenbuch.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.vaadin.grundlagenbuch.model.Game;
 
-@Repository
-public interface GameRepository extends PagingAndSortingRepository<Game, Long> {
+public interface GameRepository extends JpaRepository<Game, Long> {
 }

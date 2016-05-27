@@ -1,9 +1,7 @@
 package org.vaadin.grundlagenbuch.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.vaadin.grundlagenbuch.model.Music;
 
-@Repository
-public interface MusicRepository extends PagingAndSortingRepository<Music, Long> {
+public interface MusicRepository extends JpaRepository<Music, Long> {
 }
